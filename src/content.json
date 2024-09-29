@@ -1,0 +1,112 @@
+{
+  "details":{
+    "name":"Aryan Bansal"
+  },
+  "landing": {
+    "title": "Aryan Bansal ",
+    "subtitle": "Developer, Engineer",
+    "cta": "About Me"
+  },
+  "home": {
+    "greeting": "Hello there !!!, I am Aryan Bansal ",
+    "description": "A passionate developer specializing in building exceptional digital experiences."
+  },
+  "about": {
+    "bio": "I am Aryan Bansal, a Software Engineer working with C/C++. I enjoy creating products for fun and have a good knowledge of Python. Through this website, I want to share my work and blog about what I learn every day." ,
+    "image": "D:/samples/react-portfolio/src/my_pic.jpg"
+  },
+  "skills": {
+    "Languages": [
+      { "name": "Python" },
+      { "name": "C"},
+      { "name": "C++" },
+      { "name": "Java"},
+      { "name": "Javascript"}
+    ],
+    "Framework and Libraries": [
+      { "name": "Node.js" },
+      { "name": "Express" },
+      { "name": "Django" },
+      { "name": "Flask" },
+      { "name": "Pandas" },
+      { "name": "Tensorflow" }
+        ],
+    "Tools and Technologies": [
+      { "name": "Git", "icon": "SiGit" },
+      { "name": "Docker", "icon": "SiDocker" },
+      { "name": "Linux" },
+      { "name": "SQL" },
+      { "name": "MongoDB" },
+      { "name": "Kubernetes" }
+    ]
+  },
+  "experiences": [
+    {
+      "company": "Samsung Research India - Bangalore",
+      "title": "Software Engineer",
+      "duration": "July 2024 – Present",
+      "description": [
+        "Contributing to the Linux kernel for Android development.",
+        "Implementing control groups to efficiently manage memory resources for devices."
+      ]
+    },
+    {
+      "company": "Samsung Research India - Bangalore",
+      "title": "Intern - MODEM PHY Team",
+      "duration": "June 2023 – August 2023",
+      "description": [
+        "Developed a log analysis program with Excel-like tables, color-coded logs, filtering, and error plots.",
+        "Optimized log processing with WxPython, enabling stress testing and efficient filtering for large log files."
+      ]
+    },
+    {
+      "company": "Indian Institute of Technology, Ropar",
+      "title": "Research Assistant",
+      "duration": "Jan 2023 – May 2024",
+      "description": [
+        "Developed a solution for analyzing options derivatives based on expiration, VWAP, and IV, achieving a 21% return.",
+        "Applied time-series analysis and optimized LSTM models for algorithmic trading, reducing the error rate to 0.4%."
+      ]
+        }
+  ],
+ 
+  "socials": {
+    "twitter": "https://twitter.com/username",
+    "linkedin": "https://linkedin.com/in/username",
+    "github": "https://github.com/username",
+    "youtube": "https://youtube.com/channel/username"
+  },
+  
+
+  
+  "contact": {
+    "email": "hiaryanbansal@gmail.com",
+    "phone": "+917355161000"
+    },
+  "projects": [
+    {
+      "name": "Portfolio Website",
+      "description": "A personal portfolio website built with React and Tailwind CSS.",
+      "tech": ["React", "Tailwind CSS", "GitHub Pages"],
+      "github": "https://github.com/username/portfolio",
+      "live": "https://username.github.io/portfolio"
+    },
+    {
+      "name": "RedditReels Generator",
+      "description": "Developed a CLI tool to generate and post short-form content by scraping Reddit posts. Utilized Python, Flask, and OpenAI APIs for TTS generation and Whisper for text-audio syncing. Integrated video overlay, text alignment, and audio synchronization, successfully posting to Instagram and YouTube. Currently expanding with a frontend for broader accessibility.",
+      "tech": ["Python", "Flask", "OpenAI APIs"],
+      "github": "https://github.com/username/reddit-reels-generator",
+      "live": null
+    },
+    {
+      "name": "BroCode",
+      "description": "Developed a CLI tool for Competitive Programming, integrating the Codeforces API to sync problems with GitHub profiles. Built a problem recommendation algorithm based on user profiles, streamlining personalized practice.",
+      "tech": ["Python", "Codeforces API" , "Selenium" ],
+      "github": "https://github.com/username/brocode",
+      "live": null
+    }
+  ]
+}
+
+
+

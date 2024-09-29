@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Content Generator</title>
+</head>
+<body>
+    <h1>Portfolio Content Generator</h1>
+    <form id="contentForm">
+        <h2>Landing</h2>
+        <label>Title: <input type="text" name="title" required></label><br>
+        <label>Subtitle: <input type="text" name="subtitle" required></label><br>
+        <label>CTA: <input type="text" name="cta" required></label><br>
+
+        <h2>Home</h2>
+        <label>Greeting: <input type="text" name="greeting" required></label><br>
+        <label>Description: <input type="text" name="description" required></label><br>
+
+        <h2>About</h2>
+        <label>Bio: <input type="text" name="bio" required></label><br>
+        <label>Image: <input type="text" name="image" required></label><br>
+
+        <h2>Skills</h2>
+        <label>Frontend Skills (comma-separated): <input type="text" name="frontend" required></label><br>
+        <label>Backend Skills (comma-separated): <input type="text" name="backend" required></label><br>
+        <label>Tools (comma-separated): <input type="text" name="tools" required></label><br>
+
+        <h2>Experiences</h2>
+        <div id="experiences"></div>
+        <button type="button" onclick="addExperience()">Add Experience</button><br>
+
+        <h2>Projects</h2>
+        <div id="projects"></div>
+        <button type="button" onclick="addProject()">Add Project</button><br>
+
+        <h2>Open Source</h2>
+        <div id="opensource"></div>
+        <button type="button" onclick="addOpenSource()">Add Open Source Project</button><br>
+
+        <h2>Socials</h2>
+        <div id="socials"></div>
+        <button type="button" onclick="addSocial()">Add Social Link</button><br>
+
+        <button type="submit">Generate JSON</button>
+    </form>
+
+    <pre id="output"></pre>
+
+    <script>
+        function addExperience() {
+            const expDiv = document.createElement('div');
+            expDiv.innerHTML = `
+                <label>Company: <input type="text" name="company" required></label><br>
+                <label>Title: <input type="text" name="title" required></label><br>
+                <label>Duration: <input type="text" name="duration" required></label><br>
+                <label>Description: <textarea name="description" required></textarea></label><br>
+            `;
+            document.getElementById('experiences').appendChild(expDiv);
+        }
+
+        function addProject() {
+            const projDiv = document.createElement('div');
+            projDiv.innerHTML = `
+                <label>Project Name: <input type="text" name="projectName" required></label><br>
+                <label>Description: <input type="text" name="projectDescription" required></label><br>
+                <label>GitHub Link: <input type="text" name="projectGithub" required></label><br>
+                <label>Live Link: <input type="text" name="projectLive"></label><br>
+            `;
+            document.getElementById('projects').appendChild(projDiv);
+        }
+
+        function addOpenSource() {
+            const osDiv = document.createElement('div');
+            osDiv.innerHTML = `
+                <label>Project: <input type="text" name="osProject" required></label><br>
+                <label>Description: <input type="text" name="osDescription" required></label><br>
+                <label>Link: <input type="text" name="osLink" required></label><br>
+            `;
+            document.getElementById('opensource').appendChild(osDiv);
+        }
+
+        function addSocial() {
+            const socialDiv = document.createElement('div');
+            socialDiv.innerHTML = `
+                <label>Platform: <input type="text" name="socialPlatform" required></label><br>
+                <label>Link: <input type="text" name="socialLink" required></label><br>
+            `;
+            document.getElementById('socials').appendChild(socialDiv);
+        }
+
+        document.getElementById('contentForm').onsubmit = function(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const jsonData = {};
+            // Collecting data from the form
+            jsonData.landing = {
+                title: formData.get('title'),
+                subtitle: formData.get('subtitle'),
+                cta: formData.get('cta')
+            };
+            jsonData.home = {
+                greeting: formData.get('greeting'),
+                description: formData.get('description')
+            };
+            jsonData.about = {
+                bio: formData.get('bio'),
+                image: formData.get('image')
+            };
+            jsonData.skills = {
+                frontend: formData.get('frontend').split(',').map(skill => skill.trim()),
+                backend: formData.get('backend').split(',').map(skill => skill.trim()),
+                tools: formData.get('tools').split(',').map(tool => tool.trim())
+            };
+            jsonData.experiences = Array.from(document.querySelectorAll('#experiences > div')).map(exp => ({
+                company: exp.querySelector('input[name="company"]').value,
+                title: exp.querySelector('input[name="title"]').value,
+                duration: exp.querySelector('input[name="duration"]').value,
+                description: exp.querySelector('textarea[name="description"]').value
+            }));
+            jsonData.projects = Array.from(document.querySelectorAll('#projects > div')).map(proj => ({
+                name: proj.querySelector('input[name="projectName"]').value,
+                description: proj.querySelector('input[name="projectDescription"]').value,
+                github: proj.querySelector('input[name="projectGithub"]').value,
+                live: proj.querySelector('input[name="projectLive"]').value || null
+            }));
+            jsonData.opensource = Array.from(document.querySelectorAll('#opensource > div')).map(os => ({
+                project: os.querySelector('input[name="osProject"]').value,
+                description: os.querySelector('input[name="osDescription"]').value,
+                link: os.querySelector('input[name="osLink"]').value
+            }));
+            jsonData.socials = Array.from(document.querySelectorAll('#socials > div')).map(social => ({
+                platform: social.querySelector('input[name="socialPlatform"]').value,
+                link: social.querySelector('input[name="socialLink"]').value
+            }));
+
+            document.getElementById('output').textContent = JSON.stringify(jsonData, null, 2);
+        };
+    </script>
+</body>
+</html>
